@@ -6,6 +6,13 @@ function validateEmail(email) {
 	return true;
 }
 
+function validatePhoneNum(phone) {
+	if(phone.length != 10) {
+		return false;
+	}
+	return true;
+}
+
 function validate() {
 	console.log("Hi");
 	const fullname = document.getElementById("fullname").value;
@@ -35,12 +42,16 @@ function validate() {
 
 	// Gender validation
 	if(!male && !female) {
-		console.log("Here I am");
 		errorGender.textContent = "Please select a gender";
 	}
 
 	// Email validation
 	if(!validateEmail(email)) {
 		errorEmail.textContent = "Not a valid email address";
+	}
+
+	// Phone number validation
+	if(!validatePhoneNum(phone)) {
+		errorPhone.textContent = "Not a valid phone number";
 	}
 }
