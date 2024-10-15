@@ -1,3 +1,11 @@
+function validateFullname(fullname) {
+	if(/\d/.test(fullname)) {
+		return false;
+	}
+
+	return true;
+}
+
 function validateEmail(email) {
 	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	if(!emailPattern.test(email)) {
@@ -62,6 +70,11 @@ function validate() {
 	errorAge.textContent = "";
 	errorPassword.textContent = "";
 	errorConfirmPassword.textContent = "";
+
+	// Name validation
+	if(!validateFullname(fullname)) {
+		errorFullname.textContent = "Not a valid name";
+	}
 
 	// Gender validation
 	if(!male && !female) {
