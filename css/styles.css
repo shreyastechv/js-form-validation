@@ -25,6 +25,10 @@ input {
 	margin: 4px;
 }
 
+input:not([type="radio"]) {
+	width: 250px;
+}
+
 .bg {
 	position: absolute;
 	width: 100%;

@@ -54,4 +54,9 @@ function validate() {
 	if(!validatePhoneNum(phone)) {
 		errorPhone.textContent = "Not a valid phone number";
 	}
+
+	// Age validation
+	if(age > 60 || age < 18) {
+		errorAge.textContent = "Age should be between 18 and 60";
+	}
 }
