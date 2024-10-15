@@ -53,6 +53,11 @@ function validatePassword(password) {
 		return false;
 	}
 
+	// Check for special characters
+	if(!/[@$!%*?&]/.test(password)) {
+		return false;
+	}
+
 	return true;
 }
 
@@ -109,7 +114,7 @@ function validate() {
 
 	// Password validation
 	if(!validatePassword(password)) {
-		errorPassword.textContent = "Password must contain the following: A lowercase letter, an uppercase letter, a number, minimum of 8 characters";
+		errorPassword.textContent = "Password must contain the following: A lowercase letter, an uppercase letter, a number, minimum of 8 characters and a special character (@$!%*?&)";
 	}
 
 	// Confirm password validation
