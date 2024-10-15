@@ -1,4 +1,17 @@
+function isStrEmpty(string) {
+	if(string.trim().length == 0) {
+		return true;
+	}
+	return false;
+}
+
 function validateFullname(fullname) {
+	console.log(fullname);
+	if(isStrEmpty(fullname)) {
+		console.log("Here I am");
+		return false;
+	}
+
 	if(/\d/.test(fullname)) {
 		return false;
 	}
