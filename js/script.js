@@ -1,3 +1,11 @@
+function validateEmail(email) {
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	if(!emailPattern.test(email)) {
+		return false;
+	}
+	return true;
+}
+
 function validate() {
 	console.log("Hi");
 	const fullname = document.getElementById("fullname").value;
@@ -32,8 +40,7 @@ function validate() {
 	}
 
 	// Email validation
-	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	if(!emailPattern.test(email)) {
+	if(!validateEmail(email)) {
 		errorEmail.textContent = "Not a valid email address";
 	}
 }
