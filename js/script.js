@@ -6,9 +6,7 @@ function isStrEmpty(string) {
 }
 
 function validateFullname(fullname) {
-	console.log(fullname);
 	if(isStrEmpty(fullname)) {
-		console.log("Here I am");
 		return false;
 	}
 
