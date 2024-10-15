@@ -13,8 +13,31 @@ function validatePhoneNum(phone) {
 	return true;
 }
 
+function validatePassword(password) {
+	// Checking for length
+	if(password.length < 8) {
+		return false;
+	}
+
+	// Checking for lowercase letters
+	if(password == password.toUpperCase()) {
+		return false;
+	}
+
+	// Checking for uppercase letters
+	if(password == password.toLowerCase()) {
+		return false;
+	}
+
+	// Checking for numbers
+	if(!/\d/.test(password)) {
+		return false;
+	}
+
+	return true;
+}
+
 function validate() {
-	console.log("Hi");
 	const fullname = document.getElementById("fullname").value;
 	const male = document.getElementById("male").checked;
 	const female = document.getElementById("female").checked;
@@ -58,5 +81,15 @@ function validate() {
 	// Age validation
 	if(age > 60 || age < 18) {
 		errorAge.textContent = "Age should be between 18 and 60";
+	}
+
+	// Password validation
+	if(!validatePassword(password)) {
+		errorPassword.textContent = "Password must contain the following: A lowercase letter, an uppercase letter, a number, minimum of 8 characters";
+	}
+
+	// Confirm password validation
+	if(password !== confirmPassword) {
+		errorConfirmPassword.textContent = "Passwords must be the same";
 	}
 }
