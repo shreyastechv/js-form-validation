@@ -11,13 +11,37 @@
 	</head>
 
 	<body>
-		<div class="bg"></div>
+		<!--<div class="bg"></div>-->
 		<div class="container">
 			<main>
 				<h1>JS Form Validator</h1>
 				<section>
-					<form>
-						<input type="text" placeholder="Enter your name">
+					<form class="input-form">
+						<label for="fullname">Full name: </label>
+						<input type="text" id="fullname" name="fullname" placeholder="Enter your name"><br>
+
+						<input type="radio" id="male" name="gender">
+						<label for="male">Male</label>
+
+						<input type="radio" id="female" name="gender">
+						<label for="male">Female</label><br>
+
+						<label for="email">Email: </label>
+						<input type="email" id="email" name="email" placeholder="Enter your email"><br>
+
+						<label for="phone">Phone number: </label>
+						<input type="tel" id="phone" name="phone" placeholder="Enter your phone number"><br>
+
+						<label for="age">Age: </label>
+						<input type="number" id="age" name="age" placeholder="Enter your age"><br>
+
+						<label for="password">Password: </label>
+						<input type="password" id="password" name="password" placeholder="Enter your password"><br>
+
+						<label for="confirm-password">Confirm password: </label>
+						<input type="password" id="confirm-password" name="confirm-password" placeholder="Re-type password"><br>
+
+						<button type="button" onclick="validate()">Submit</button>
 					</form>
 				</section>
 			</main>
