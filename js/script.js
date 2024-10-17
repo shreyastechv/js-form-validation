@@ -33,32 +33,34 @@ function validatePhoneNum(phone) {
 }
 
 function validatePassword(password) {
+	let errorStr ="";
+
 	// Checking for length
 	if(password.length < 8) {
-		return false;
+		errorStr += "<br>- more than 8 characters";
 	}
 
 	// Checking for lowercase letters
 	if(password == password.toUpperCase()) {
-		return false;
+		errorStr += "<br>- a lowercase letter";
 	}
 
 	// Checking for uppercase letters
 	if(password == password.toLowerCase()) {
-		return false;
+		errorStr += "<br>- an uppercase letter";
 	}
 
 	// Checking for numbers
 	if(!/\d/.test(password)) {
-		return false;
+		errorStr += "<br>- one digit";
 	}
 
 	// Check for special characters
 	if(!/[@$!%*?&]/.test(password)) {
-		return false;
+		errorStr += "<br>- one special character (@$!%*?&)";
 	}
 
-	return true;
+	return errorStr;
 }
 
 function validate() {
@@ -70,6 +72,9 @@ function validate() {
 	const age = document.getElementById("age").value;
 	const password = document.getElementById("password").value;
 	const confirmPassword = document.getElementById("confirm-password").value;
+	const date = new Date(document.getElementById("date").value);
+	const website = document.getElementById("website").value
+	const terms = document.getElementById("terms").checked;
 
 	let errorFullname = document.getElementById("error-fullname");
 	let errorGender = document.getElementById("error-gender");
@@ -78,6 +83,9 @@ function validate() {
 	let errorAge = document.getElementById("error-age");
 	let errorPassword = document.getElementById("error-password");
 	let errorConfirmPassword = document.getElementById("error-confirm-password");
+	const errorDate = document.getElementById("error-date");
+	const errorWebsite = document.getElementById("error-website");
+	const errorTerms = document.getElementById("error-terms");
 
 	errorFullname.textContent = "";
 	errorGender.textContent = "";
@@ -86,6 +94,9 @@ function validate() {
 	errorAge.textContent = "";
 	errorPassword.textContent = "";
 	errorConfirmPassword.textContent = "";
+	errorDate.textContent = "";
+	errorWebsite.textContent = "";
+	errorTerms.textContent = "";
 
 	// Name validation
 	if(!validateFullname(fullname)) {
@@ -113,12 +124,30 @@ function validate() {
 	}
 
 	// Password validation
-	if(!validatePassword(password)) {
-		errorPassword.textContent = "Password must contain the following: A lowercase letter, an uppercase letter, a number, minimum of 8 characters and a special character (@$!%*?&)";
+	const errorStr = validatePassword(password);
+	if(errorStr != "") {
+		errorPassword.innerHTML = "Password must contain atleast the following:" + errorStr;
+	}
+	else if(password !== confirmPassword) {
+		errorConfirmPassword.textContent = "Passwords must be the same";
 	}
 
-	// Confirm password validation
-	if(password !== confirmPassword) {
-		errorConfirmPassword.textContent = "Passwords must be the same";
+	// Date validation
+	const year = date.getFullYear();
+	const month = date.getMonth()+1;
+	const day = date.getDate();
+	if((year<2006 || year>2025) || (year==2006 && (month<10 || (month==10 && day<17))) || (year==2025 && (month>10 || (month==10 && day>17)))) {
+		errorDate.textContent = "Date must be between 2006-10-17 and 2025-10-17";
+	}
+
+	// Website url validation
+	const urlPattern = /^(http:\/\/|https:\/\/)?(www\.)?[\w]+\.(com|org|net|io|us|uk|de|cn|xyz|site|online|co|be|fr|zip|ing)$/;
+	if(!urlPattern.test(website)) {
+		errorWebsite.textContent = "Url is invalid";
+	}
+
+	// Checkbox validation
+	if(!terms) {
+		errorTerms.textContent = "You need to accept the terms";
 	}
 }

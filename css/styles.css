@@ -4,29 +4,33 @@
 }
 
 body {
-	font-family: Nunito Sans, sans-serif;
-	background-color: lightblue;
+	background-color: #efffdc;
 }
 
 .container {
-	text-align: center;
 	padding: 40px;
 	font-size: 25px;
 }
 
+h1 {
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+
 label {
 	font-size: 16px;
+	font-weight: bold;
 }
 
 input {
-	font-size: 18px;
+	font-size: 16px;
 	padding: 10px;
 	border-radius: 4px;
 	margin: 4px;
 }
 
-input:not([type="radio"]) {
-	width: 250px;
+input:not([type="radio"]):not([type="checkbox"]) {
+	width: 200px;
 }
 
 .bg {
@@ -47,6 +51,7 @@ button {
 	background-color: lightpink;
 	border: none;
 	border-radius: 4px;
+	cursor: pointer;
 }
 
 .error {
