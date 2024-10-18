@@ -31,7 +31,16 @@ function validatePhoneNum(phone) {
 	}
 	return true;
 }
-
+/* Password validation using regex
+function validatePassword(password) {
+	let errorStr ="";
+	const passwordPattern = /^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[0-9]+)(?=.*[@$!%*?&]+)[a-zA-Z0-9@$!%*?&]{8,}$/;
+	if (!passwordPattern.test(password)) {
+		errorStr = "NOPE!";
+	}
+	return errorStr;
+}
+*/
 function validatePassword(password) {
 	let errorStr ="";
 
